@@ -72,7 +72,13 @@ Lint/AmbiguousRegexpLiteral:
   Enabled: false
 
 # DISABLED
-Lint/Eval:
+Metrics/BlockLength:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Security/Eval:
   Enabled: false
 
 # DISABLED
