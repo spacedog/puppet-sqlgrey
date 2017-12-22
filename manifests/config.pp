@@ -24,7 +24,6 @@ class sqlgrey::config (
           include ::mysql::server
         }
 
-
         ensure_packages(
           [
             $::sqlgrey::params::package_dbd_mysql,

@@ -8,7 +8,7 @@ class sqlgrey::params {
     'Debian': {
       $package_name      = 'sqlgrey'
       $service_name      = 'sqlgrey'
-      $package_dbd_mysql = 'perl-DBD-MySQL'
+      $package_dbd_mysql = 'libdbd-mysql-perl'
     }
     'RedHat', 'Amazon': {
       $package_name      = 'sqlgrey'
