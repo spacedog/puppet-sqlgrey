@@ -179,6 +179,32 @@ describe 'sqlgrey::config' do
               end
             end
           end
+          context "sqlgrey::config with clients_fqdn_whitelist set" do
+            let(:params) do
+              default_params.merge({
+                'clients_fqdn_whitelist' => [
+                  'foo.example.com',
+                  'bar.example.com',
+                ]
+              })
+            end
+            it do
+              is_expected.to contain_file('/etc/sqlgrey/clients_fqdn_whitelist.local').with_content("bar.example.com\nfoo.example.com")
+            end
+          end
+          context "sqlgrey::config with clients_ip_whitelist set" do
+            let(:params) do
+              default_params.merge({
+                'clients_ip_whitelist' => [
+                  '10.0.0.1',
+                  '10.0.0.2',
+                ]
+              })
+            end
+            it do
+              is_expected.to contain_file('/etc/sqlgrey/clients_ip_whitelist.local').with_content("10.0.0.1\n10.0.0.2")
+            end
+          end
         end
       end
     end
