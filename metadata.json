@@ -1,17 +1,13 @@
 {
   "name": "abaranov-sqlgrey",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "abaranov",
-  "summary": "",
+  "summary": "A module to manage sqlgrey - postfix greylisting policy",
   "license": "Apache-2.0",
-  "source": "",
-  "project_page": "",
-  "issues_url": "",
+  "source": "https://github.com/spacedog/puppet-sqlgrey",
+  "project_page": "https://github.com/spacedog/puppet-sqlgrey",
+  "issues_url": "https://github.com/spacedog/puppet-sqlgrey/issues",
   "dependencies": [
-    {
-      "name": "puppetlabs-stdlib",
-      "version_requirement": ">= 1.0.0"
-    }
   ],
   "operatingsystem_support": [
     {
