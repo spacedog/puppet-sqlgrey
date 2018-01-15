@@ -1,8 +1,9 @@
 #### Table of Contents
 
 1. [Overview](#overview)
-2. [Usage - Configuration options and additional functionality](#usage)
-3. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+2. [Usage](#usage)
+3. [Reference](#reference)
+4. [Limitations](#limitaions)
 
 ## Overview
 
