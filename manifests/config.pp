@@ -2,6 +2,12 @@
 #
 # This class is called from sqlgrey for service config.
 #
+# @param manage_db manage db setup with that module
+# @param db_export export db to puppet collectors
+# @param db_tag export tag for puppet collectors
+# @param config sqlgrey configuration options
+# @param clients_fqdn_whitelist the list of whitelisted FQDNs
+# @param clients_ip_whitelist the list of whitelisted IPs
 class sqlgrey::config (
   Boolean            $manage_db,
   Boolean            $db_export,

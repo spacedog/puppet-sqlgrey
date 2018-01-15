@@ -1,51 +1,94 @@
 #### Table of Contents
 
 1. [Overview](#overview)
-2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with sqlgrey](#setup)
-    * [What sqlgrey affects](#what-sqlgrey-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with sqlgrey](#beginning-with-sqlgrey)
-4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+2. [Usage - Configuration options and additional functionality](#usage)
+3. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+4. [Limitations - OS compatibility, etc.](#limitations)
+5. [Development - Guide for contributing to the module](#development)
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves. This is your 30 second elevator pitch for your module. Consider including OS/Puppet version it works with.       
+[![Build Status](https://travis-ci.org/spacedog/puppet-sqlgrey.svg?branch=master)](https://travis-ci.org/spacedog/puppet-sqlgrey)
 
-## Module Description
+This puppet module configures sqlgrey - postfix greylisting policy service with an SQL database as storage backend
 
-If applicable, this section should have a brief description of the technology the module integrates with and what that integration enables. This section should answer the questions: "What does this module *do*?" and "Why would I use it?"
-
-If your module has a range of functionality (installation, configuration, management, etc.) this is the time to mention it.
-
-## Setup
-
-### What sqlgrey affects
-
-* A list of files, packages, services, or operations that the module will alter, impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form. 
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled, etc.), mention it here. 
-
-### Beginning with sqlgrey
-
-The very basic steps needed for a user to get the module up and running. 
-
-If your most recent release breaks compatibility or requires particular steps for upgrading, you may wish to include an additional section here: Upgrading (For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing the fancy stuff with your module here. 
+To configure sqlgrey module include it to puppet manifest and define _config_ hash with sqlgrey parameters
+
+```puppet
+class { '::sqlgrey:'
+  config => {
+    db_type => {
+      value => 'mysql',
+    },
+    db_name => {
+      value => 'sqlgrey',
+    },
+    db_user => {
+      value => 'sqlgrey',
+    },
+    db_pass => {
+      value => "DON'T SHARE SECRETS",
+    },
+    db_host => {
+      value => 'localhost',
+    },
+    regect_code => {
+      value => '451'
+    },
+  }
+}
+```
+
+or the same but using using hiera
+
+```puppet
+include ::sqlgrey
+```
+
+```yaml
+sqlgrey::config:
+  db_type:
+    value: 'mysql'
+  db_name:
+    value: 'sqlgrey'
+  db_user:
+    value: 'sqlgrey'
+  db_pass:
+    value: "DON'T SHARE SECRETS"
+  db_host:
+    value: 'localhost
+  prepend:
+    value: '1'
+  optmethod:
+    value: 'optout'
+  reject_first_attempt:
+    value: 'immed'
+  reject_early_reconnect:
+    value: 'immed'
+  regect_code:
+    value: '451'
+  admin_mail:
+    value: /dev/null
+```
+
+
+To define fqdn or ip whitelist use _clients_fqdn_whitelist_ or clients_ip_whitelist_ arrays:
+
+```yaml
+sqlgrey::clients_fqdn_whitelist:
+  - 'test.example.com'
+  - 'test1.example.com'
+sqlgrey::clients_ip_whitelist:
+  - '192.168.0.0/24'
+  - '10.0.0.0/8'
+```
 
 ## Reference
 
-Here, list the classes, types, providers, facts, etc contained in your module. This section should include all of the under-the-hood workings of your module so people know what the module is touching on their system but don't need to mess with things. (We are working on automating this section!)
+Check [./doc/index.html](https://github.com/spacedog/puppet-sqlgrey/doc/index.html)
 
 ## Limitations
 
@@ -54,7 +97,7 @@ This is where you list OS compatibility, version compatibility, etc.
 ## Development
 
 Since your module is awesome, other users will want to play with it. Let them know what the ground rules for contributing are.
-
+ wv
 ## Release Notes/Contributors/Etc **Optional**
 
 If you aren't using changelog, put your release notes here (though you should consider using changelog). You may also add any additional sections you feel are necessary or important to include here. Please use the `## ` header. 

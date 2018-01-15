@@ -12,6 +12,8 @@ group :test do
   gem 'simplecov', '>= 0.11.0'
   gem 'simplecov-console'
 
+  gem 'puppet-strings'
+  gem 'redcarpet'
   gem "puppet-lint-absolute_classname-check"
   gem "puppet-lint-leading_zero-check"
   gem "puppet-lint-trailing_comma-check"

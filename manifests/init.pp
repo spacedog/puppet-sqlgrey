@@ -1,6 +1,18 @@
 # == Class: sqlgrey
 #
 # Main init class for sqlgrey
+#
+# @param package_name OS dependent sqlgrey package name
+# @param service_name OS dependent sqlgrey service name
+# @param service_ensure state of sqlgrey service
+# @param service_enable start sqlgrey during the OS boot
+# @param package_ensure ensure the state of sqlgrey software package
+# @param config sqlgrey configuration options
+# @param manage_db manage db setup with that module
+# @param db_export export db to puppet collectors
+# @param db_tag export tag for puppet collectors
+# @param clients_fqdn_whitelist the list of whitelisted FQDNs
+# @param clients_ip_whitelist the list of whitelisted IPs
 class sqlgrey (
   String             $package_name           = $::sqlgrey::params::package_name,
   String             $service_name           = $::sqlgrey::params::service_name,
