@@ -3,8 +3,6 @@
 1. [Overview](#overview)
 2. [Usage - Configuration options and additional functionality](#usage)
 3. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-4. [Limitations - OS compatibility, etc.](#limitations)
-5. [Development - Guide for contributing to the module](#development)
 
 ## Overview
 
@@ -59,7 +57,7 @@ sqlgrey::config:
   db_pass:
     value: "DON'T SHARE SECRETS"
   db_host:
-    value: 'localhost
+    value: 'localhost'
   prepend:
     value: '1'
   optmethod:
@@ -88,16 +86,10 @@ sqlgrey::clients_ip_whitelist:
 
 ## Reference
 
-Check [./doc/index.html](https://github.com/spacedog/puppet-sqlgrey/doc/index.html)
+Check ./doc/index.html
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+Tested on Debian 6/7 and RedHat 5/6/7 with Puppet4 
 
-## Development
 
-Since your module is awesome, other users will want to play with it. Let them know what the ground rules for contributing are.
- wv
-## Release Notes/Contributors/Etc **Optional**
-
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You may also add any additional sections you feel are necessary or important to include here. Please use the `## ` header. 
